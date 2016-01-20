@@ -14,8 +14,7 @@
 				</div>
 				<div class="collapse navbar-collapse navbar-public" id="navbar-top">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="{% url 'landingpage' %}#home">Home</a></li>
-						<li>{{>login}}</li>
+						<li>{{>loginButtons}}</li>
 					</ul>
 				</div>
 			</div>
@@ -28,7 +27,12 @@
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="col-md-offset-2 col-md-6">
+			<div class="col-md-12">
+				{{>friends}}
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="col-md-offset-2 col-md-8">
 				<div style="position:absolute;top:0;bottom:0;width:100%;min-height:500px" id='map'></div>
 			</div>
 		</div>

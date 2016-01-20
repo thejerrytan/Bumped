@@ -4,11 +4,15 @@ Meteor.startup(function() {
     	FB.init({
       		appId      : '446286968895184',
       		status     : true,
+      		cookie    : true,
       		xfbml      : true
     	});
   	};
-  	FB.ui({
-  		method : 'feed'
+  	FB.Event.subscribe('auth.statusChange', function(response){
+		if(response.status == "connected") {
+			var uid = response.authResponse.userID;
+			console.log("uid = " + uid);
+		}
   	});
 	window.onload = function(){
 		var currentLocation;
@@ -24,7 +28,6 @@ Meteor.startup(function() {
 	    		//   3: timed out
 			});
 		}
-	  	console.log(currentLocation);
 		$.getScript("https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js", function(){
 			Session.set("mapbox-gl", 1);
 			mapboxgl.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
@@ -35,10 +38,7 @@ Meteor.startup(function() {
 			    zoom: 14.5 // starting zoom
 			});	
 		})
-	}
-	Accounts.ui.config({
-    	passwordSignupFields : "USERNAME_ONLY"
-  	});
+	};
 	// Potentially prompts the user to enable location services. We do this early
 	// on in order to have the most accurate location by the time the user shares
-});
+})
