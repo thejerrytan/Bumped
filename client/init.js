@@ -1,4 +1,6 @@
 Meteor.startup(function() {
+	map = null;
+
 	// Initialize FB javascript SDK
 	window.fbAsyncInit = function() {
     	FB.init({
@@ -15,10 +17,16 @@ Meteor.startup(function() {
 		}
   	});
 	window.onload = function(){
-		var currentLocation;
+		// Default NUS Coordinates
+		var currentLocation = {coords: {latitude: 1.296750, longitude: 103.773186}};
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position){
 				currentLocation = position;
+
+				// Pan to current location when detected
+				if(map != null){
+					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
+				}
 			}, function(error){
 				console.log('An error has occured while getting user\'s location' + error.code);
 				// error.code can be:
@@ -28,10 +36,13 @@ Meteor.startup(function() {
 	    		//   3: timed out
 			});
 		}
+		else{
+			console.log('nope, no navigator');
+		}
 		$.getScript("https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js", function(){
 			Session.set("mapbox-gl", 1);
 			mapboxgl.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
-			var map = new mapboxgl.Map({
+			map = new mapboxgl.Map({
 			    container: 'map', // container id
 			    style: 'mapbox://styles/mapbox/emerald-v8', //stylesheet location
 			    center: [currentLocation.coords.longitude, currentLocation.coords.latitude], // starting position is user's location
