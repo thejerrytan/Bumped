@@ -1,0 +1,14 @@
+/* CSS declarations go here */
+#login-buttons {
+	margin-top : 10px;
+}
+
+.map-container #map {
+	min-height : 500px;
+}
+
+.map-container { 
+	min-height : 500px;
+	border : 5px solid #AAAAAA;
+	border-radius : 3px;
+}

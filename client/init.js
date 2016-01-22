@@ -9,15 +9,13 @@ Meteor.startup(function() {
       		cookie    : true,
       		xfbml      : true
     	});
-
-    	FB.Event.subscribe('auth.statusChange', function(response){
+	  	FB.Event.subscribe('auth.statusChange', function(response){
 			if(response.status == "connected") {
 				var uid = response.authResponse.userID;
 				console.log("uid = " + uid);
 			}
   		});
   	};
-  	
 	window.onload = function(){
 		// Default NUS Coordinates
 		var currentLocation = {coords: {latitude: 1.296750, longitude: 103.773186}};
