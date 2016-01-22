@@ -49,7 +49,7 @@ Meteor.startup(function() {
 				var uid = response.authResponse.userID;
 				console.log("uid = " + uid);
 				var profilePictureUrl = "http://graph.facebook.com/v2.5/" + uid + "/picture?height=100&width=100";
-				console.log(profilePictureUrl);
+				Meteor.users.update(Meteor.userId(), {$set: {"profile.profile_picture_url": profilePictureUrl}});
 			}
 	  	});
   	};
