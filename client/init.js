@@ -64,6 +64,12 @@ Meteor.startup(function() {
 				if(map != null){
 					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
 				}
+
+				// Save to database
+				var lastLocation = [currentLocation.coords.latitude, currentLocation.coords.longitude];
+				var lastLocationTimestamp = (new Date()).getTime();
+				Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": lastLocationTimestamp}});
+
 			}, function(error){
 				alert('An error has occured while getting user\'s location' + error.code);
 				// error.code can be:
