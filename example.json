@@ -11,7 +11,7 @@
 			"first_name" : "Jerry"
 			"last_name" : "Si Kai",
 			"link" : "https://www.facebook.com/app_scoped_user_id/12309234234/",
-			"profile_picture_url" : "https://www.akamai.com/sadfasdfasfsdf",	// We need to add this in ourselves through a graph API call
+			
 			"gender" : "male",
 			"locale" : "en_US",
 			"age_range" : {
@@ -19,27 +19,30 @@
 			}
 		}
 	},
-	"profile" : "Jery Tan Si Kai",
-	"lastLocation" : [1.23344, 102.3434],	// lat, lng using HTML5 Geolocation
-	"lastLocationTimestamp" : 1231231334	// need to decide on a polling frequency
-	"friends" : [ {
-		"fb_id" : "a12381123",	// Get from graph API call
-		"name" : "Harry Goh",	// Get from graph API call
-		"profile_picture_url" : "wwww.akamai.com/asdfasdf",	// Get from graph API call
-		"status" : "meet"		// User has to specify, default "neutral"
-		"lastUpdated" : 12123234234 	// Last time the status was updated
-		}, {
-		"fb_id" : "a12381123",
-		"name" : "Barry Tng",
-		"profile_picture_url" : "wwww.akamai.com/asdfasdf",
-		"status" : "netural",
-		"lastUpdated" : 123123123123
-		}, {
-		"fb_id" : "a12381123",
-		"name" : "Cameron Diaz",
-		"profile_picture_url" : "wwww.akamai.com/asdfasdf",
-		"status" : "avoid",
-		"lastUpdated" : 123134523423
-		}
-	]
+	"profile" : {
+		"name" : "Jery Tan Si Kai",
+		"profile_picture_url" : "https://www.akamai.com/sadfasdfasfsdf",	// We need to add this in ourselves through a graph API call
+		"lastLocation" : [1.23344, 102.3434],	// lat, lng using HTML5 Geolocation
+		"lastLocationTimestamp" : 1231231334	// need to decide on a polling frequency
+		"friends" : [ {
+			"fb_id" : "a12381123",	// Get from graph API call
+			"name" : "Harry Goh",	// Get from graph API call
+			"profile_picture_url" : "wwww.akamai.com/asdfasdf",	// Get from graph API call
+			"status" : "meet"		// User has to specify, default "neutral"
+			"lastUpdated" : 12123234234 	// Last time the status was updated
+			}, {
+			"fb_id" : "a12381123",
+			"name" : "Barry Tng",
+			"profile_picture_url" : "wwww.akamai.com/asdfasdf",
+			"status" : "netural",
+			"lastUpdated" : 123123123123
+			}, {
+			"fb_id" : "a12381123",
+			"name" : "Cameron Diaz",
+			"profile_picture_url" : "wwww.akamai.com/asdfasdf",
+			"status" : "avoid",
+			"lastUpdated" : 123134523423
+			}
+		]
+	}
 }
