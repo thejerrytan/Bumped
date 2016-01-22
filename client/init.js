@@ -7,13 +7,13 @@ Meteor.startup(function() {
       		cookie    : true,
       		xfbml      : true
     	});
+	  	FB.Event.subscribe('auth.statusChange', function(response){
+			if(response.status == "connected") {
+				var uid = response.authResponse.userID;
+				console.log("uid = " + uid);
+			}
+	  	});
   	};
-  	FB.Event.subscribe('auth.statusChange', function(response){
-		if(response.status == "connected") {
-			var uid = response.authResponse.userID;
-			console.log("uid = " + uid);
-		}
-  	});
 	window.onload = function(){
 		var currentLocation;
 		if (navigator.geolocation) {
