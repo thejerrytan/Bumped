@@ -2,5 +2,29 @@
 	<meta charset="utf-8">
 	<title>Bump-Into</title>
 	<meta name="description" content="Bump into the people you want to meet!">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
 </head>
+
+<body>
+	<!-- Navigation -->
+	<header>
+	    <nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header navbar-public">
+					<a href="/" class="navbar-brand">Bumped</a>
+	    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top" aria-expanded="false">
+	        			<span class="sr-only">Toggle Navigation</span>
+	        			<span class="icon-bar"></span>
+	        			<span class="icon-bar"></span>
+	        			<span class="icon-bar"></span>
+	        		</button>
+				</div>
+				<div class="collapse navbar-collapse navbar-public" id="navbar-top">
+					<ul class="nav navbar-nav navbar-right">
+						<li>{{> loginButtons}}</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div id="fb-root"></div>
+</body>
