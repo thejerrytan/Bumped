@@ -1,6 +1,6 @@
 Template.friends.helpers({
 	load : function() {
-		Meteor.call('getFriendsData', function(err, data) {
+		Meteor.call('fb.getUserData', function(err, data) {
 			console.log(data);
 		});
 	}
