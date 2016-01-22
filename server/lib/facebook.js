@@ -29,3 +29,7 @@ Facebook.prototype.getUserData = function() {
 Facebook.prototype.getFriendsData = function() {
     return this.query('/me/friends?fields=name,picture,email,id');
 }
+
+Facebook.prototype.getProfilePicture = function(userid, height, width) {
+    return this.query('/' + userid + '/picture?height=' + height + '&width=' + width)
+}
