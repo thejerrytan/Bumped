@@ -10,8 +10,6 @@ Meteor.startup(function() {
 			
 			map.setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 16);
 			
-			
-			
 			var greenIcon = L.icon({
 				iconUrl: 'green-marker.png',
 				iconSize: [22, 33],
@@ -35,7 +33,6 @@ Meteor.startup(function() {
 			// 	L.latLng(1.298234, 103.773365),
 			// 	L.latLng(1.300975, 103.771933),
 			// ], {color: '#ff8000'}).addTo(map);
-
 		}
 	});
 
@@ -47,7 +44,7 @@ Meteor.startup(function() {
       		cookie    : true,
       		xfbml      : true
     	});
-    	FB.Event.subscribe('auth.statusChange', function(response){
+	  	FB.Event.subscribe('auth.statusChange', function(response){
 			if(response.status == "connected") {
 				var uid = response.authResponse.userID;
 				console.log("uid = " + uid);
@@ -65,7 +62,7 @@ Meteor.startup(function() {
 
 				// Pan to current location when detected
 				if(map != null){
-					// map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
+					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
 				}
 			}, function(error){
 				alert('An error has occured while getting user\'s location' + error.code);
@@ -80,6 +77,4 @@ Meteor.startup(function() {
 			alert("Seems like your browser does not allow location sharing. Please allow location sharing and refresh the page!");
 		};
 	};
-	// Potentially prompts the user to enable location services. We do this early
-	// on in order to have the most accurate location by the time the user shares
 })

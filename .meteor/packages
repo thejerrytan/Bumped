@@ -24,7 +24,6 @@ service-configuration
 mrt:facebook-sdk
 meteorhacks:npm
 
-
 npm-container
 pauloborges:mapbox
 iron:router
