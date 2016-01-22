@@ -10,14 +10,33 @@ Meteor.startup(function() {
 			console.log("zoom");
 			map.setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 16);
 			console.log("zoomed");
+			
+			
+			
+			var greenIcon = L.icon({
+				iconUrl: 'green-marker.png',
+				iconSize: [22, 33],
+				iconAnchor: [11, 33],
+			});
+
+			var redIcon = L.icon({
+				iconUrl: 'red-marker.png',
+				iconSize: [22, 33],
+				iconAnchor: [11, 33],
+			});
+
 			var iAmHere = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude]).addTo(map);
-			var polygon = L.polygon([
-				L.latLng(1.300768, 103.770574),
-				L.latLng(1.298591, 103.770091),
-				L.latLng(1.297752, 103.772969),
-				L.latLng(1.298234, 103.773365),
-				L.latLng(1.300975, 103.771933),
-			], {color: 'green'}).addTo(map);
+			var iAmHereToo = L.marker([1.300768, 103.770574], {icon: greenIcon}).addTo(map);
+			var iAmHereTooAlso = L.marker([1.298591, 103.770091], {icon: redIcon}).addTo(map);
+
+			// var polygon = L.polygon([
+			// 	L.latLng(1.300768, 103.770574),
+			// 	L.latLng(1.298591, 103.770091),
+			// 	L.latLng(1.297752, 103.772969),
+			// 	L.latLng(1.298234, 103.773365),
+			// 	L.latLng(1.300975, 103.771933),
+			// ], {color: '#ff8000'}).addTo(map);
+
 		}
 	});
 
