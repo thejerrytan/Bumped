@@ -10,9 +10,14 @@ header .navbar-nav > li > a {
     color: #FFF;
 }
 
-.navbar-default.navbar-pacman .navbar-nav > a:hover {
+.navbar-default.navbar-pacman .navbar-nav a:hover {
     background-color : transparent;
     color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav .dropdown-menu a:hover {
+	background-color : #F5F5F5;
+    color: #000000;	
 }
 
 .profile-pic {

@@ -9,7 +9,7 @@
 	<header>
     	<nav class="navbar navbar-default navbar-pacman">
 			<div class="container-fluid">
-				<div class="navbar-header navbar-inverse">
+				<div class="navbar-header">
 					<a href="{{pathFor route="home"}}" class="navbar-brand">Bumped</a>
 	    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top" aria-expanded="false">
 	        			<span class="sr-only">Toggle Navigation</span>
@@ -21,8 +21,8 @@
 				<div class="collapse navbar-collapse navbar-public" id="navbar-top">
 					<ul class="nav navbar-nav navbar-right">
 						{{#if currentUser}}
-							<li><a href="{{pathFor route="home"}}">Home</a></li>
-							<li><a href="{{pathFor route="friends"}}"><span class="glpyhicon glyphicon-user"></span>Friends</a></li>
+							<li><a href="{{pathFor route="home"}}"><i class="fa fa-home"></i>&nbsp;Home</a></li>
+							<li><a href="{{pathFor route="friends"}}"><i class="fa fa-users"></i>&nbsp;Friends</a></li>
 							<!-- <li><img src="{{currentUser.profile.profile_picture_url}}"></li> -->
 						{{/if}}
 						{{> login}}
