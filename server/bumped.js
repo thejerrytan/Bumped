@@ -1,18 +1,26 @@
+var _ = lodash;
+
 Meteor.methods({
+	"Debug.test" : function(phoneVariable){
+		console.log(phoneVariable);
+	},
 	"Bumped.updateLocation" : function(lastLocation){
 		console.log(lastLocation);
 		Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": (new Date()).getTime()}});
 	},
 	"Bumped.getFriendLocations": function() {
+		var user = Meteor.user();
+
+		if (!user) return [];
+
 		var friendIds = [];
 		var friendStatus = {};
-		
-		var friends = Meteor.user().profile.friends;
-		for(var i = 0; i < friends.length; i++){
-			var friend = friends[i];
+
+		var friends = _.get(user, "profile.friends") || [];
+		friends.forEach(function (friend) {
 			friendIds.push(friend.fb_id);
 			friendStatus[friend.fb_id] = friend.status;
-		}
+		});
 
 		var users = Meteor.users.find({"services.facebook.id": {$in: friendIds}}).fetch();
 		var data = [];

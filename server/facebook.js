@@ -23,11 +23,12 @@ Meteor.methods({
             bumped_friends.push(e.fb_id);
         });
         Meteor.call("fb.getFriendsData", function(err, data){
+            if (err) return console.log(err);
+
+            console.log(data);
             result = data;
             var new_friends = result.data.filter(function(e){
-                if(bumped_friends.indexOf(e.id)==-1) {
-                    return true;
-                }
+                return (bumped_friends.indexOf(e.id)==-1) ;
             });
             new_friends.forEach(function(e){
                 friends.push({
@@ -43,8 +44,15 @@ Meteor.methods({
     "fb.updateUserProfile" : function() {
         Meteor.call("fb.getUserData", function(err, data){
             var fb_id = data.id;
-            var profile_picture_url = "https://graph.facebook.com/v2.5/" + data.id + "/picture?height=25&width=25";
-            Meteor.users.update(Meteor.userId(), {$set: {"profile.profile_picture_url" : profile_picture_url, "profile.fb_id" : fb_id }});
+
+            var profile_picture_url = "https://graph.api.facebook/v2.5/" + data.id + "/picture?height=40&width=40";
+            Meteor.users.update(Meteor.userId(), {
+                $set: {
+                    "profile.profile_picture_url" : profile_picture_url, 
+                    "profile.fb_id" : fb_id, 
+                    "profile.friends" : [] 
+                }
+            });
         });
     }
 });
