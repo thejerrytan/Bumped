@@ -39,17 +39,19 @@ Meteor.startup(function() {
 	// Initialize FB javascript SDK
 	window.fbAsyncInit = function() {
     	FB.init({
-      		appId      : '446286968895184',
-      		status     : true,
-      		cookie    : true,
-      		xfbml      : true
+			appId      : '446286968895184',
+			status     : true,
+			cookie     : true,
+			xfbml      : true
     	});
 	  	FB.Event.subscribe('auth.statusChange', function(response){
 			if(response.status == "connected") {
 				var uid = response.authResponse.userID;
-				console.log("uid = " + uid);
-				var profilePictureUrl = "http://graph.facebook.com/v2.5/" + uid + "/picture?height=100&width=100";
-				Meteor.users.update(Meteor.userId(), {$set: {"profile.profile_picture_url": profilePictureUrl}});
+				Meteor.call('fb.loadFriends', function(err, data){
+
+				});
+				// var profilePictureUrl = "http://graph.facebook.com/v2.5/" + uid + "/picture?height=100&width=100";
+				// Meteor.users.update(Meteor.userId(), {$set: {"profile.profile_picture_url": profilePictureUrl}});
 			}
 	  	});
   	};
@@ -67,11 +69,15 @@ Meteor.startup(function() {
 
 				// Save to database
 				var lastLocation = [currentLocation.coords.latitude, currentLocation.coords.longitude];
-				var lastLocationTimestamp = (new Date()).getTime();
-				Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": lastLocationTimestamp}});
+				// var lastLocationTimestamp = (new Date()).getTime();
+				// Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": lastLocationTimestamp}});
+				Meteor.call("Bumped.updateLocation", lastLocation, function(err, data){
+					console.log("Error " + err);
+					console.log("Data " + data);
+				});
 
 			}, function(error){
-				alert('An error has occured while getting user\'s location' + error.code);
+				alert('An error has occured while getting user\'s location. Error code ' + error.code);
 				// error.code can be:
 	    		//   0: unknown error
 	    		//   1: permission denied

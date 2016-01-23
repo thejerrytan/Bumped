@@ -1,5 +1,7 @@
 <template name="friends">
 	{{getFriends}}
 	<img src="{{getProfilePicture userid=this.id}}">
-	<!-- {{/each}} -->
+	{{# each friends}}
+		{{updateLocation}}
+	{{/each}}
 </template>
