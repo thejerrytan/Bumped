@@ -1,7 +1,7 @@
 Router.route('/', function () {
-  this.render('landingpage');
+  this.render('landingpage', {'name' : 'landingpage'});
 });
 
 Router.route('/friends', function () {
-  this.render('friends');
+  this.render('friends', {'name' : 'friends'});
 });

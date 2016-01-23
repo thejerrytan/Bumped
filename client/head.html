@@ -7,7 +7,7 @@
 <body>
 	<!-- Navigation -->
 	<header>
-	    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-pacman">
 			<div class="container-fluid">
 				<div class="navbar-header navbar-public">
 					<a href="/" class="navbar-brand">Bumped</a>
@@ -20,7 +20,11 @@
 				</div>
 				<div class="collapse navbar-collapse navbar-public" id="navbar-top">
 					<ul class="nav navbar-nav navbar-right">
-						<li>{{> loginButtons}}</li>
+						{{> login}}
+						{{#if currentUser}}
+							<li><a href="{{pathFor route="friends"}}"><span class="glpyhicon glyphicon-user"></span>Friends</a></li>
+							<!-- <li><img src="{{currentUser.profile.profile_picture_url}}"></li> -->
+						{{/if}}
 					</ul>
 				</div>
 			</div>
