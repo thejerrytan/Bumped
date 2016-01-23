@@ -9,21 +9,21 @@ Meteor.startup(function() {
 			map.setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 16);
 			
 			// Icons
-			var greenIcon = L.icon({
-				iconUrl: 'green-marker.png',
-				iconSize: [22, 33],
-				iconAnchor: [11, 33],
-			});
+			// var greenIcon = L.icon({
+			// 	iconUrl: 'green-marker.png',
+			// 	iconSize: [22, 33],
+			// 	iconAnchor: [11, 33],
+			// });
 
-			var redIcon = L.icon({
-				iconUrl: 'red-marker.png',
-				iconSize: [22, 33],
-				iconAnchor: [11, 33],
-			});
+			// var redIcon = L.icon({
+			// 	iconUrl: 'red-marker.png',
+			// 	iconSize: [22, 33],
+			// 	iconAnchor: [11, 33],
+			// });
 			
 			// Marker
-			L.marker([1.300768, 103.770574], {icon: greenIcon}).addTo(map);
-			L.marker([1.298591, 103.770091], {icon: redIcon}).addTo(map);
+			// L.marker([1.300768, 103.770574], {icon: greenIcon}).addTo(map);
+			// L.marker([1.298591, 103.770091], {icon: redIcon}).addTo(map);
 
 			// var polygon = L.polygon([
 			// 	L.latLng(1.300768, 103.770574),
