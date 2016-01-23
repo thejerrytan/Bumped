@@ -21,6 +21,7 @@ Template.home.helpers({
 Template.home.onRendered(function(){
 	var map = null;
 	mapCentered = false;
+	mapFollow = false;
 	Tracker.autorun(function () {
 		if (Mapbox.loaded()) {
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
@@ -35,8 +36,23 @@ Template.home.onRendered(function(){
 			map.setView([1.3000, 103.8000], 16);
 			getLocation(map, featureLayer);
 			// map.setView([meCurrentLatitude, meCurrentLongitude], 16);
+
+
+			map.getContainer().querySelector('#follow').onclick = function() {
+			    if (this.className === 'btn btn-default active') {
+			        this.className = 'btn btn-default';
+			        this.innerHTML = "Follow";
+			        mapFollow = false;
+			    } else {
+			        this.className = 'btn btn-default active';
+			        this.innerHTML = "Unfollow";
+			        mapFollow = true;
+			    }
+			    return false;
+			};
 		}	
 	});
+
 })
 
 function loadMap(position, map, featureLayer){
@@ -46,7 +62,7 @@ function loadMap(position, map, featureLayer){
 
 	var currentLocation = {coords: {latitude: meCurrentLatitude, longitude: meCurrentLongitude}};
 
-	if (!mapCentered){
+	if (!mapCentered || mapFollow){
 		map.setView([meCurrentLatitude,meCurrentLongitude], map._zoom);
 		mapCentered = true;
 	}
