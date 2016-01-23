@@ -29,3 +29,4 @@ pauloborges:mapbox
 iron:router
 ejson
 erasaur:meteor-lodash
+mdg:geolocation
