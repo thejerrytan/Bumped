@@ -99,6 +99,7 @@ Meteor.startup(function() {
 				// Pan to current location when detected
 				if(map != null){
 					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
+					L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude]).addTo(map);
 				}
 
 				// Save to database
