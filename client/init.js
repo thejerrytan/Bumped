@@ -1,5 +1,6 @@
 Meteor.startup(function() {
 	map = null;
+	meLayer = null;
 	Mapbox.load();
 	Tracker.autorun(function () {
 		var currentLocation = {coords: {latitude: 1.296750, longitude: 103.773186}};
@@ -144,13 +145,43 @@ Meteor.startup(function() {
 				if(map != null){
 					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
 
-					var meIcon = L.icon({
-						iconUrl: 'me-marker.gif',
-						iconSize: [50, 50],
-						iconAnchor: [25, 50],
-					});
+					// var meIcon = L.icon({
+					// 	iconUrl: 'me-marker.gif',
+					// 	iconSize: [50, 50],
+					// 	iconAnchor: [25, 50],
+					// });
 
-					L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: meIcon}).addTo(map);
+					// L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: meIcon}).addTo(map);
+
+					if(meLayer == null){
+						meLayer = L.mapbox.featureLayer().addTo(map);
+					}
+					var meGeoJson = [{
+				        type: "Feature",
+				        geometry: {
+				            type: "Point",
+				            coordinates: [currentLocation.coords.longitude, currentLocation.coords.latitude]
+				        },
+				        properties: {
+				        	"marker-color": "#ccff99",
+				        	"title":"me",
+				        	"icon": {
+					            "iconUrl": "me-marker.gif",
+					            "iconSize": [50, 50], // size of the icon
+					            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+					            "className": "dot"
+					        }
+				        }
+				    }];
+
+				    // Set a custom icon on each marker based on feature properties.
+					meLayer.on('layeradd', function(e) {
+					    var marker = e.layer,
+					        feature = marker.feature;
+
+					    marker.setIcon(L.icon(feature.properties.icon));
+					});
+					meLayer.setGeoJSON(meGeoJson);
 				}
 
 				// Save to database
