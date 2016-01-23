@@ -20,17 +20,15 @@ Meteor.methods({
         Meteor.call("fb.getFriendsData", function(err, data){
             result = data;
             var friends = [];
-            console.log(result);
             for(i=0; i < result.data.length;i++){
-                picture_obj = EJSON.stringify(result.data[i]);
-                console.log(picture_obj.picture);
                 friends.push({
-                    "fb_id" : result.data[i].id,
-                    "name"  : result.data[i].name,
-                    "profile_picture_url" : result.data[i].picture.data.url
+                    "fb_id"  : result.data[i].id,
+                    "name"   : result.data[i].name,
+                    "status" : "neutral",
+                    "profile_picture_url" : "https://graph.facebook.com/v2.5/" + result.data[i].id + "/picture?height=100&width=100"
                 });
             }
-            Meteor.users.update(Meteor.userId(), {$set: {"friends" : friends }});
+            Meteor.users.update(Meteor.userId(), {$set: {"profile.friends" : friends }});
         });
     }
 });

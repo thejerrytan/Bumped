@@ -1,7 +1,30 @@
 <template name="friends">
-	{{getFriends}}
-	<img src="{{getProfilePicture userid=this.id}}">
-	{{# each friends}}
-		{{updateLocation}}
-	{{/each}}
+	<div class="container">
+    	<div class="row">
+    		<div class="col-md-offset-1 col-md-3">
+				{{#each homies}}
+					<p>{{name}}</p>
+					<img src="{{profile_picture_url}}">
+					<button class="neutral">Neutral</button>
+					<button class="avoid">Avoid</button>
+				{{/each}}
+			</div>
+			<div class="col-md-3">
+				{{#each friends}}
+					<p>{{name}}</p>
+					<img src="{{profile_picture_url}}">
+					<button class="meet">Meet</button>
+					<button class="avoid">Avoid</button>
+				{{/each}}
+			</div>
+			<div class="col-md-3">
+				{{#each friendnemies}}
+					<p>{{name}}</p>
+					<img src="{{profile_picture_url}}">
+					<button class="meet">Meet</button>
+					<button class="neutral">Neutral</button>
+				{{/each}}
+			</div>
+		</div>
+	</div>
 </template>

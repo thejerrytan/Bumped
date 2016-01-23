@@ -1,24 +1,6 @@
 Template.friends.onCreated(function(){
-	// call a server method that populates the user collection with friends using fbgraph API
-	Meteor.call('fb.getFriends', function(err, data){
-		console.log(data);
-	});
-});
 
-Template.friends.helpers({
-	getFriends : function() {
-		var result = Meteor.call('fb.getFriendsData', function(err, data){
-			console.log(data);
-		});
-		// console.log(result);
-		return result.data;
-	},
-	getProfilePicture : function(userid) {
-		Meteor.call('fb.getProfilePicture', userid, 100, 100, function(err, data){
-			console.log(data);
-		});
-	}
-})
+});
 
 Template.friends.onRendered(function(){
 	var self = this;
@@ -30,4 +12,44 @@ Template.friends.onRendered(function(){
 			}	
 		});
 	});
+})
+
+Template.friends.helpers({
+	friends : function() {
+		var result = Meteor.user().profile;
+		var data = [];
+		for(var i=0; i<result.friends.length; i++) {
+			console.log(result.friends.length);
+			if(result.friends[i].status==undefined || result.friends[i].status=="neutral") {
+				data.push(result.friends[i]);
+			}
+		}
+		return data;
+	},
+	friendnemies : function() {
+		var result = Meteor.user().profile;
+		var data = [];
+		for(var i=0; i<result.friends.length; i++) {
+			if(result.friends[i].status=="avoid") {
+				console.log(result.friends.length);
+				data.push(result.friends[i]);
+			}
+		}
+		return data;
+	},
+	homies : function() {
+		var result = Meteor.user().profile;
+		var data = [];
+		for(var i=0; i<result.friends.length; i++) {
+			if(result.friends[i].status=="meet") {	
+				console.log(result.friends.length);	
+				data.push(result.friends[i]);
+			}
+		}
+		return data;
+	},
+	getProfilePicture : function(userid) {
+		var result = Meteor.wrapAsync('fb.getProfilePicture', userid, 100, 100);
+		return result;
+	}
 })
