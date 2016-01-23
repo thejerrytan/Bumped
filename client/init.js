@@ -12,11 +12,10 @@ Meteor.startup(function() {
 	  	FB.Event.subscribe('auth.statusChange', function(response){
 			if(response.status == "connected") {
 				var uid = response.authResponse.userID;
-				Meteor.call('fb.loadFriends', function(err, data){
-
-				});
+				
 				Meteor.call('fb.updateUserProfile', function(err, data){
-
+					Meteor.call('fb.loadFriends', function(err, data){
+					});
 				});
 			}
 	  	});
