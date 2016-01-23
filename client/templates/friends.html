@@ -1,36 +1,42 @@
 <template name="friends">
 	<div class="container">
     	<div class="row">
-    		<div class="col-md-offset-1 col-md-3">
-    			<h3>Your Homies!</h3>
+    		<div class="col-md-4 center">
+    			<h3 class="friend-header">Your Homies!</h3>
 				{{#each homies}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
-						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+					<div class="friend">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+						</div>
 					</div>
 				{{/each}}
 			</div>
-			<div class="col-md-3">
-				<h3>Your friends!</h3>
+			<div class="col-md-4 center">
+				<h3 class="friend-header">Your friends!</h3>
 				{{#each friends}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
-						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+					<div class="friend">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+						</div>
 					</div>
 				{{/each}}
 			</div>
-			<div class="col-md-3">
-				<h3>Your Friendnemies!</h3>
+			<div class="col-md-4 center">
+				<h3 class="friend-header">Your Friendnemies!</h3>
 				{{#each friendnemies}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
-						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+					<div class="friend">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+							<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+						</div>
 					</div>
 				{{/each}}
 			</div>
