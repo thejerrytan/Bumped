@@ -40,11 +40,11 @@ Template.home.onRendered(function(){
 			getLocation(map, featureLayer);
 			// map.setView([meCurrentLatitude, meCurrentLongitude], 16);
 
-			map.getContainer().querySelector('#test').onclick = function() {
-			    Meteor.call("Debug.test" , "ghgghghgg" ,function (err, data) {     
-					console.log(data);
-			    });
-			};
+			// map.getContainer().querySelector('#test').onclick = function() {
+			//     Meteor.call("Debug.test" , "ghgghghgg" ,function (err, data) {     
+			// 		console.log(data);
+			//     });
+			// };
 
 
 			map.getContainer().querySelector('#follow').onclick = function() {

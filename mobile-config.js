@@ -5,8 +5,14 @@ App.configurePlugin('com.phonegap.plugins.facebookconnect', {
 });
 
 App.info({
-  name: 'Bump-Into',
+  name: 'Bump',
   description: 'A Hack&Roll Project',
   version: '0.0.1'
 });
 
+App.icons({
+  'android_ldpi': 'resources/icons/ldpiIcon.png',
+  'android_mdpi': 'resources/icons/mdpiIcon.png',
+  'android_hdpi': 'resources/icons/hdpiIcon.png',
+  'android_xhdpi': 'resources/icons/xhdpiIcon.png'
+});
