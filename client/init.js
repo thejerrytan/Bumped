@@ -35,7 +35,7 @@ Meteor.startup(function() {
 
 
 			// Dynamic Add and Remove Points
-			var featureLayer = L.mapbox.featureLayer().addTo(map);
+			featureLayer = L.mapbox.featureLayer().addTo(map);
 			var geoJson = [
 			{
 		        type: "Feature",
