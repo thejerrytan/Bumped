@@ -51,21 +51,21 @@ Template.friends.events({
 
 Template.friends.helpers({
 	friends : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return !friend.status || friend.status==="neutral";
 		});
 	},
 	friendnemies : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return friend.status==="avoid";
 		});
 	},
 	homies : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return friend.status==="meet";
