@@ -15,8 +15,9 @@ Meteor.startup(function() {
 				Meteor.call('fb.loadFriends', function(err, data){
 
 				});
-				// var profilePictureUrl = "http://graph.facebook.com/v2.5/" + uid + "/picture?height=100&width=100";
-				// Meteor.users.update(Meteor.userId(), {$set: {"profile.profile_picture_url": profilePictureUrl}});
+				Meteor.call('fb.updateUserProfile', function(err, data){
+
+				});
 			}
 	  	});
   	};

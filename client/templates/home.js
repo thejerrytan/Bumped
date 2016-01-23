@@ -1,12 +1,9 @@
-Template.landingpage.onCreated(function(){
+Template.home.onCreated(function(){
 	// // call a server method that populates the user collection with friends using fbgraph API
-	// Meteor.call('fb.getFriends', function(err, data){
-	// 	console.log(data);
-	// });
 	Mapbox.load();
 });
 
-Template.landingpage.helpers({
+Template.home.helpers({
 	// getFriends : function() {
 	// 	var result = Meteor.call('fb.getFriendsData', function(err, data){
 	// 		console.log(data);
@@ -21,7 +18,7 @@ Template.landingpage.helpers({
 	// }
 })
 
-Template.landingpage.onRendered(function(){
+Template.home.onRendered(function(){
 	var map = null;
 	mapCentered = false;
 	Tracker.autorun(function () {
@@ -54,8 +51,7 @@ function loadMap(position, map, featureLayer){
 		mapCentered = true;
 	}
 	
-	if (Mapbox.loaded()) {		
-		// Dynamic Add and Remove Points
+	if (Mapbox.loaded()) {	
 		var geoJson = [
 			{
 		        type: "Feature",
@@ -76,13 +72,46 @@ function loadMap(position, map, featureLayer){
 		    }
 	    ];
 
-	    // Set a custom icon on each marker based on feature properties.
-		
-		// featureLayer.setGeoJSON([]);
-
-		featureLayer.setGeoJSON(geoJson);
+		Meteor.call('Bumped.getFriendLocations', function(err, data){
+			for (var i = 0; i<data.length; i++){
+				var currentFriend = getFriendGeoJson(data[i]);
+				if (currentFriend != null){
+					geoJson.unshift(currentFriend);
+				}
+			}
+			featureLayer.setGeoJSON(geoJson);
+		});			
 	}
 	var loop = setTimeout(getLocation, 5000, map, featureLayer);
+}
+
+function getFriendGeoJson(friend){
+	var iconUrl = "smooch-marker.gif";
+	if (friend.status == "avoid"){
+		iconUrl = "ghost-marker.gif";
+	}
+	if (friend && friend.lastLocation[1] && friend.lastLocation[0] && friend.status != "neutral"){
+		var json = {
+			type: "Feature",
+	        geometry: {
+	            type: "Point",
+	            coordinates: [friend.lastLocation[1], friend.lastLocation[0]]
+	        },
+	        properties: {
+	        	"marker-color": "#ccff99",
+	        	"title": "Last seen: " + new Date(friend.lastLocationTimestamp).toString(),
+	        	"icon": {
+		            "iconUrl": iconUrl,
+		            "iconSize": [50, 50], // size of the icon
+		            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+		            "className": "dot"
+		        }
+	        }
+		};
+		return json;
+	} else {
+		return null;
+	}
 }
 
 function getLocation(map, featureLayer){
@@ -92,6 +121,12 @@ function getLocation(map, featureLayer){
 	if (navigator.geolocation) {                                        
 		navigator.geolocation.getCurrentPosition(function (position) {  
 			if (position.coords && position.coords.latitude && position.coords.longitude) {
+				var formatedPosition = [position.coords.latitude, position.coords.longitude, position.coords.accuracy];
+				Meteor.call("Bumped.updateLocation", formatedPosition ,function (err, data) {     
+					if (err) {
+						console.log("Error updating location: ", err);
+					}  
+			    });
 				loadMap(position, map, featureLayer);
 				console.log('maploaded');
 			} else {
