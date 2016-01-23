@@ -43,29 +43,73 @@ Meteor.startup(function() {
 		            type: "Point",
 		            coordinates: [103.770574, 1.300768]
 		        },
-		        properties: {"marker-color": "#ccff99" }
+		        properties: {
+		        	"marker-color": "#ccff99",
+		        	"title":"lala",
+		        	"icon": {
+			            "iconUrl": "smooch-marker.gif",
+			            "iconSize": [50, 50], // size of the icon
+			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+			            "className": "dot"
+			        }
+		        }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.770091, 1.298591]
 		        },
-		        properties: {"marker-color": "#ff6666" }
+		        properties: {
+		        	"marker-color": "#ff6666",
+		        	"title":"lala",
+		        	"icon": {
+			            "iconUrl": "smooch-marker.gif",
+			            "iconSize": [50, 50], // size of the icon
+			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+			            "className": "dot"
+			        }
+		        }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.772969, 1.297752]
 		        },
-		        properties: {"marker-color": "#ccff99" }
+		        properties: {
+		        	"marker-color": "#ccff99",
+		        	"title":"lala",
+		        	"icon": {
+			            "iconUrl": "smooch-marker.gif",
+			            "iconSize": [50, 50], // size of the icon
+			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+			            "className": "dot"
+			        }
+		        }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.773365, 1.298234]
 		        },
-		        properties: {"marker-color": "#ff6666" }
+		        properties: {
+		        	"marker-color": "#ff6666",
+		        	"title":"lala",
+		        	"icon": {
+			            "iconUrl": "smooch-marker.gif",
+			            "iconSize": [50, 50], // size of the icon
+			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+			            "className": "dot"
+			        }
+		        }
 		    }];
+
+		    // Set a custom icon on each marker based on feature properties.
+			featureLayer.on('layeradd', function(e) {
+			    var marker = e.layer,
+			        feature = marker.feature;
+
+			    marker.setIcon(L.icon(feature.properties.icon));
+			});
 			featureLayer.setGeoJSON(geoJson);
 		}
 	});
