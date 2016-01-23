@@ -15,6 +15,48 @@ header .navbar-nav > li > a {
     color: #FFFFFF;
 }
 
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block {
+	margin-top    : 15px;
+	padding-left  : 20px;
+	margin-right  : 20px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block > .fa {
+	border : none;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-facebook:hover {
+    background-color : #2D4373;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav .dropdown-menu a:hover {
+	background-color : #F5F5F5;
+    color: #000000;	
+}
+
 .profile-pic {
 	border : 4px solid rgb(36,36,255);
 	border-radius : 3px;
