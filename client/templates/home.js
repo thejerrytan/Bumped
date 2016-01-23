@@ -118,7 +118,6 @@ function getFriendGeoJson(friend){
 }
 
 function getLocation(map, featureLayer){
-	console.log("!!!!!!!!!!")
 	var locationFailure = false;
 	// var currentLocation = { coords: { latitude: 1.296750, longitude: 103.773186 } };
 	if (navigator.geolocation) {                                        

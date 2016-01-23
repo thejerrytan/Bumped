@@ -1,4 +1,7 @@
 Meteor.methods({
+	"Debug.test" : function(phoneVariable){
+		console.log(phoneVariable);
+	},
 	"Bumped.updateLocation" : function(lastLocation){
 		console.log(lastLocation);
 		Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": (new Date()).getTime()}});
