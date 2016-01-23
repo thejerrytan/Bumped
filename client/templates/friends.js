@@ -14,6 +14,38 @@ Template.friends.onRendered(function(){
 	});
 })
 
+Template.friends.events({
+	"click .btn.neutral" : function(event){
+		event.preventDefault();
+		var fb_id = event.target.value;
+		console.log(fb_id);
+
+		Meteor.call("Bumped.changeToNeutral", fb_id, function(err, data){
+			console.log("change to neutral!" + data);
+		});
+	},
+	"click .btn.meet" : function(event){
+		event.preventDefault();
+		var fb_id = event.target.value;
+		console.log(fb_id);
+
+		Meteor.call("Bumped.changeToMeet", fb_id, function(err, data){
+			console.log("change to meet!" + data);
+
+		});
+	},
+	"click .btn.avoid" : function(event){
+		event.preventDefault();
+		var fb_id = event.target.value;
+		console.log(fb_id);
+
+		Meteor.call("Bumped.changeToAvoid", fb_id, function(err, data){
+			console.log("change to avoid!" + data);
+
+		});
+	}
+});
+
 Template.friends.helpers({
 	friends : function() {
 		var result = Meteor.user().profile;
