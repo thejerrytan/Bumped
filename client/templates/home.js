@@ -1,4 +1,4 @@
-Template.landingpage.onCreated(function(){
+Template.home.onCreated(function(){
 	// // call a server method that populates the user collection with friends using fbgraph API
 	// Meteor.call('fb.getFriends', function(err, data){
 	// 	console.log(data);
@@ -6,7 +6,7 @@ Template.landingpage.onCreated(function(){
 	locationPoll();
 });
 
-Template.landingpage.helpers({
+Template.home.helpers({
 	// getFriends : function() {
 	// 	var result = Meteor.call('fb.getFriendsData', function(err, data){
 	// 		console.log(data);
@@ -21,7 +21,7 @@ Template.landingpage.helpers({
 	// }
 })
 
-Template.landingpage.onRendered(function(){
+Template.home.onRendered(function(){
 	// var self = this;
 	// self.autorun(function(){
 	// 	self.subscribe("friends", function(){
