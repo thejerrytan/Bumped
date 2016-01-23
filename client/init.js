@@ -63,7 +63,7 @@ Meteor.startup(function() {
 		        	"marker-color": "#ff6666",
 		        	"title":"lala",
 		        	"icon": {
-			            "iconUrl": "smooch-marker.gif",
+			            "iconUrl": "ghost-marker.gif",
 			            "iconSize": [50, 50], // size of the icon
 			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
 			            "className": "dot"
@@ -95,7 +95,7 @@ Meteor.startup(function() {
 		        	"marker-color": "#ff6666",
 		        	"title":"lala",
 		        	"icon": {
-			            "iconUrl": "smooch-marker.gif",
+			            "iconUrl": "ghost-marker.gif",
 			            "iconSize": [50, 50], // size of the icon
 			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
 			            "className": "dot"
@@ -143,7 +143,14 @@ Meteor.startup(function() {
 				// Pan to current location when detected
 				if(map != null){
 					map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
-					L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude]).addTo(map);
+
+					var meIcon = L.icon({
+						iconUrl: 'me-marker.gif',
+						iconSize: [50, 50],
+						iconAnchor: [25, 50],
+					});
+
+					L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: meIcon}).addTo(map);
 				}
 
 				// Save to database
