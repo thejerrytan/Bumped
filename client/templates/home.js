@@ -25,41 +25,41 @@ Template.home.onRendered(function(){
 	mapFollow = false;
 	Tracker.autorun(function () {
 		var position = Geolocation.currentLocation();
-		if (Mapbox.loaded() && position != null && !maploaded) {
-			maploaded = true;
-			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
-			map = L.mapbox.map("map", "mapbox.emerald");
-			featureLayer = L.mapbox.featureLayer().addTo(map);
-			featureLayer.on('layeradd', function(e) {
-			    var marker = e.layer,
-			        feature = marker.feature;
-			    marker.setIcon(L.icon(feature.properties.icon));
-			});
+		if (!position || maploaded || !Mapbox.loaded()) return;
+		//if (Mapbox.loaded() && position != null && !maploaded) {
+		maploaded = true;
+		L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
+		map = L.mapbox.map("map", "mapbox.emerald");
+		featureLayer = L.mapbox.featureLayer().addTo(map);
+		featureLayer.on('layeradd', function(e) {
+			var marker = e.layer,
+				feature = marker.feature;
+			marker.setIcon(L.icon(feature.properties.icon));
+		});
 
-			map.setView([1.3000, 103.8000], 16);
-			getLocation(map, featureLayer);
-			// map.setView([meCurrentLatitude, meCurrentLongitude], 16);
+		map.setView([1.3000, 103.8000], 16);
+		getLocation(map, featureLayer);
+		// map.setView([meCurrentLatitude, meCurrentLongitude], 16);
 
-			// map.getContainer().querySelector('#test').onclick = function() {
-			//     Meteor.call("Debug.test" , "ghgghghgg" ,function (err, data) {     
-			// 		console.log(data);
-			//     });
-			// };
+		// map.getContainer().querySelector('#test').onclick = function() {
+		//     Meteor.call("Debug.test" , "ghgghghgg" ,function (err, data) {
+		// 		console.log(data);
+		//     });
+		// };
 
 
-			map.getContainer().querySelector('#follow').onclick = function() {
-			    if (this.className === 'btn btn-default active') {
-			        this.className = 'btn btn-default';
-			        this.innerHTML = "Follow";
-			        mapFollow = false;
-			    } else {
-			        this.className = 'btn btn-default active';
-			        this.innerHTML = "Unfollow";
-			        mapFollow = true;
-			    }
-			    return false;
-			};
-		}	
+		map.getContainer().querySelector('#follow').onclick = function() {
+			if (this.className === 'btn btn-default active') {
+				this.className = 'btn btn-default';
+				this.innerHTML = "Follow";
+				mapFollow = false;
+			} else {
+				this.className = 'btn btn-default active';
+				this.innerHTML = "Unfollow";
+				mapFollow = true;
+			}
+			return false;
+		};
 	});
 
 })
