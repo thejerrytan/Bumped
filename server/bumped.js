@@ -23,19 +23,31 @@ Meteor.methods({
 			friendStatus[friend.fb_id] = friend.status;
 		});
 
-		var users = Meteor.users.find({"services.facebook.id": {$in: friendIds}}).fetch();
-		var data = [];
-		for(var i = 0; i < users.length; i++){
-			var user = users[i];
-			var profile = user.profile;
-			var facebook = user.services.facebook;
-			var id = facebook.id;
-			var status = friendStatus[id];
-			
-			data.push({fb_id: id, status: status, name: profile.name, lastLocation: profile.lastLocation, lastLocationTimestamp: profile.lastLocationTimestamp, profile_picture_url: profile.profile_picture_url});
-		}
+		return Meteor.users.find({"services.facebook.id": {$in: friendIds}})
+			.map(function (user) {
+				var profile = user.profile || {};
+				var id = _.get(user, 'services.facebook.id');
 
-		return data;
+				return {
+					fb_id: id,
+					status: id != undefined ? friendStatus[id] : undefined,
+					name: profile.name,
+					lastLocation: profile.lastLocation,
+					lastLocationTimestamp: profile.lastLocationTimestamp,
+					profile_picture_url: profile.profile_picture_url
+				};
+			});
+		//for(var i = 0; i < users.length; i++){
+		//	var user = users[i];
+		//	var profile = user.profile;
+		//	var facebook = user.services.facebook;
+		//	var id = facebook.id;
+		//	var status = friendStatus[id];
+		//
+		//	data.push({fb_id: id, status: status, name: profile.name, lastLocation: profile.lastLocation, lastLocationTimestamp: profile.lastLocationTimestamp, profile_picture_url: profile.profile_picture_url});
+		//}
+
+		//return data;
 	},
 	"Bumped.changeToNeutral" : function(fb_id){
 		var friend_list = Meteor.user().profile;
