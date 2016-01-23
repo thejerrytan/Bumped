@@ -28,4 +28,5 @@ npm-container
 pauloborges:mapbox
 iron:router
 ejson
-twbs:bootstrap
+erasaur:meteor-lodash
+fortawesome:fontawesome

@@ -1,16 +1,23 @@
 /* CSS declarations go here */
-header ul.nav > li {
-	margin-top : 5px;
-	margin-bottom : 5px;
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav > a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
 }
 
 .profile-pic {
 	border : 4px solid rgb(36,36,255);
 	border-radius : 3px;
-}
-
-#login-buttons {
-	margin-top : 5px;
 }
 
 .map-container #map {
@@ -24,5 +31,5 @@ header ul.nav > li {
 }
 
 nav.navbar.navbar-pacman {
-	background-color : #000000;
+	background-color : #1A1A1A;
 }

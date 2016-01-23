@@ -17,17 +17,26 @@ Meteor.methods({
     },
     "fb.loadFriends" : function() {
         var result;
+        var bumped_friends = [];
+        var friends = Meteor.user().profile.friends;
+        friends.forEach(function(e){
+            bumped_friends.push(e.fb_id);
+        });
         Meteor.call("fb.getFriendsData", function(err, data){
             result = data;
-            var friends = [];
-            for(i=0; i < result.data.length;i++){
+            var new_friends = result.data.filter(function(e){
+                if(bumped_friends.indexOf(e.id)==-1) {
+                    return true;
+                }
+            });
+            new_friends.forEach(function(e){
                 friends.push({
-                    "fb_id"  : result.data[i].id,
-                    "name"   : result.data[i].name,
+                    "fb_id"  : e.id,
+                    "name"   : e.name,
                     "status" : "neutral",
-                    "profile_picture_url" : "https://graph.facebook.com/v2.5/" + result.data[i].id + "/picture?height=100&width=100"
+                    "profile_picture_url" : "https://graph.facebook.com/v2.5/" + e.id + "/picture?height=100&width=100"
                 });
-            }
+            });
             Meteor.users.update(Meteor.userId(), {$set: {"profile.friends" : friends }});
         });
     },
