@@ -23,7 +23,7 @@ Template.landingpage.helpers({
 
 Template.landingpage.onRendered(function(){
 	var map = null;
-
+	mapCentered = false;
 	Tracker.autorun(function () {
 		if (Mapbox.loaded()) {
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
@@ -47,45 +47,41 @@ function loadMap(position, map, featureLayer){
 	var meCurrentLatitude = position.coords.latitude;
 	var meCurrentLongitude =  position.coords.longitude;
 
-	// Tracker.autorun(function () {
-		var currentLocation = {coords: {latitude: meCurrentLatitude, longitude: meCurrentLongitude}};
+	var currentLocation = {coords: {latitude: meCurrentLatitude, longitude: meCurrentLongitude}};
 
-		if (Mapbox.loaded()) {
-			console.log(map);
-			if (map != null){
-			// 	map.remove();
-			// 	map = L.mapbox.map("map", "mapbox.emerald");
-				map.setView([meCurrentLatitude, meCurrentLongitude], map._zoom);
-			}
-			// Dynamic Add and Remove Points
-			var geoJson = [
-				{
-			        type: "Feature",
-			        geometry: {
-			            type: "Point",
-			            coordinates: [meCurrentLongitude, meCurrentLatitude]
-			        },
-			        properties: {
-			        	"marker-color": "#ccff99",
-			        	"title":"I am here!!",
-			        	"icon": {
-				            "iconUrl": "me-marker.gif",
-				            "iconSize": [50, 50], // size of the icon
-				            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
-				            "className": "dot"
-				        }
+	if (!mapCentered){
+		map.setView([meCurrentLatitude,meCurrentLongitude], map._zoom);
+		mapCentered = true;
+	}
+	
+	if (Mapbox.loaded()) {		
+		// Dynamic Add and Remove Points
+		var geoJson = [
+			{
+		        type: "Feature",
+		        geometry: {
+		            type: "Point",
+		            coordinates: [meCurrentLongitude, meCurrentLatitude]
+		        },
+		        properties: {
+		        	"marker-color": "#ccff99",
+		        	"title":"I am here!!",
+		        	"icon": {
+			            "iconUrl": "me-marker.gif",
+			            "iconSize": [50, 50], // size of the icon
+			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+			            "className": "dot"
 			        }
-			    }
-		    ];
+		        }
+		    }
+	    ];
 
-		    // Set a custom icon on each marker based on feature properties.
-			
-			featureLayer.setGeoJSON([]);
+	    // Set a custom icon on each marker based on feature properties.
+		
+		// featureLayer.setGeoJSON([]);
 
-			featureLayer.setGeoJSON(geoJson);
-
-		}
-	// });
+		featureLayer.setGeoJSON(geoJson);
+	}
 	var loop = setTimeout(getLocation, 5000, map, featureLayer);
 }
 
@@ -96,7 +92,6 @@ function getLocation(map, featureLayer){
 	if (navigator.geolocation) {                                        
 		navigator.geolocation.getCurrentPosition(function (position) {  
 			if (position.coords && position.coords.latitude && position.coords.longitude) {
-				// XYZ
 				loadMap(position, map, featureLayer);
 				console.log('maploaded');
 			} else {
