@@ -90,7 +90,7 @@ function getFriendGeoJson(friend){
 	if (friend.status == "avoid"){
 		iconUrl = "ghost-marker.gif";
 	}
-	if (friend && friend.lastLocation[1] && friend.lastLocation[0] && friend.status != "neutral"){
+	if (friend && friend.lastLocation[1] && friend.lastLocation[0] && friend.status){
 		var json = {
 			type: "Feature",
 	        geometry: {
