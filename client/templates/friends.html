@@ -2,27 +2,36 @@
 	<div class="container">
     	<div class="row">
     		<div class="col-md-offset-1 col-md-3">
+    			<h3>Your Homies!</h3>
 				{{#each homies}}
-					<p>{{name}}</p>
 					<img src="{{profile_picture_url}}">
-					<button class="neutral">Neutral</button>
-					<button class="avoid">Avoid</button>
+					<p>{{name}}</p>
+					<div>
+						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+					</div>
 				{{/each}}
 			</div>
 			<div class="col-md-3">
+				<h3>Your friends!</h3>
 				{{#each friends}}
-					<p>{{name}}</p>
 					<img src="{{profile_picture_url}}">
-					<button class="meet">Meet</button>
-					<button class="avoid">Avoid</button>
+					<p>{{name}}</p>
+					<div>
+						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+					</div>
 				{{/each}}
 			</div>
 			<div class="col-md-3">
+				<h3>Your Friendnemies!</h3>
 				{{#each friendnemies}}
-					<p>{{name}}</p>
 					<img src="{{profile_picture_url}}">
-					<button class="meet">Meet</button>
-					<button class="neutral">Neutral</button>
+					<p>{{name}}</p>
+					<div>
+						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+					</div>
 				{{/each}}
 			</div>
 		</div>
