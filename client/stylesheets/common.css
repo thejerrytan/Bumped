@@ -19,3 +19,10 @@
 	right:	10px;
 	z-index: 1;
 }
+
+#test {
+	position: absolute;
+	top: 60px;
+	right:	10px;
+	z-index: 1;
+}

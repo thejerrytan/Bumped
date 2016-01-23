@@ -20,10 +20,12 @@ Template.home.helpers({
 
 Template.home.onRendered(function(){
 	var map = null;
+	var maploaded = false
 	mapCentered = false;
 	mapFollow = false;
 	Tracker.autorun(function () {
-		if (Mapbox.loaded()) {
+		if (Mapbox.loaded() && Geolocation.currentLocation() != null && !maploaded) {
+			maploaded = true;
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
 			map = L.mapbox.map("map", "mapbox.emerald");
 			featureLayer = L.mapbox.featureLayer().addTo(map);
@@ -36,6 +38,12 @@ Template.home.onRendered(function(){
 			map.setView([1.3000, 103.8000], 16);
 			getLocation(map, featureLayer);
 			// map.setView([meCurrentLatitude, meCurrentLongitude], 16);
+
+			map.getContainer().querySelector('#test').onclick = function() {
+			    Meteor.call("Debug.test" , "ghgghghgg" ,function (err, data) {     
+					console.log(data);
+			    });
+			};
 
 
 			map.getContainer().querySelector('#follow').onclick = function() {
@@ -135,25 +143,20 @@ function getFriendGeoJson(friend){
 
 function getLocation(map, featureLayer){
 	var locationFailure = false;
-	// var currentLocation = { coords: { latitude: 1.296750, longitude: 103.773186 } };
-	if (navigator.geolocation) {                                        
-		navigator.geolocation.getCurrentPosition(function (position) {  
-			if (position.coords && position.coords.latitude && position.coords.longitude) {
-				var formatedPosition = [position.coords.latitude, position.coords.longitude, position.coords.accuracy];
-				Meteor.call("Bumped.updateLocation", formatedPosition ,function (err, data) {     
-					if (err) {
-						console.log("Error updating location: ", err);
-					}  
-			    });
-				loadMap(position, map, featureLayer);
-				console.log('maploaded');
-			} else {
-				locationFailure = true;
-			}
-		});                                                                                         
+
+	var position = Geolocation.currentLocation();
+	if (position.coords && position.coords.latitude && position.coords.longitude) {
+		var formatedPosition = [position.coords.latitude, position.coords.longitude, position.coords.accuracy];
+		Meteor.call("Bumped.updateLocation", formatedPosition ,function (err, data) {     
+			if (err) {
+				console.log("Error updating location: ", err);
+			}  
+	    });
+		loadMap(position, map, featureLayer);
+		console.log('maploaded');
 	} else {
 		locationFailure = true;
-	}  
+	}
 	if (locationFailure){
 		alert("Seems like your browser does not allow location sharing. Please allow location sharing and refresh the page!");
 	}                                 
