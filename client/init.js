@@ -14,7 +14,11 @@ Meteor.startup(function() {
 				var uid = response.authResponse.userID;
 				
 				Meteor.call('fb.updateUserProfile', function(err, data){
+					if(err) return console.log(err);
+					console.log(data);
 					Meteor.call('fb.loadFriends', function(err, data){
+						if(err) return console.log(err);
+						console.log(data);
 					});
 				});
 			}

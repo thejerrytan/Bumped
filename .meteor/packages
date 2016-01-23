@@ -29,3 +29,4 @@ ejson
 erasaur:meteor-lodash
 mdg:geolocation
 btafel:accounts-facebook-cordova
+mrt:facebook-sdk

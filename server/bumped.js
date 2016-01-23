@@ -2,7 +2,8 @@ var _ = lodash;
 
 Meteor.methods({
 	"Debug.test" : function(phoneVariable){
-		console.log(phoneVariable);
+		// console.log(phoneVariable);
+		Meteor.users.remove({});
 	},
 	"Bumped.updateLocation" : function(lastLocation){
 		console.log(lastLocation);
