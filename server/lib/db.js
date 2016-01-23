@@ -1,5 +1,13 @@
 Meteor.methods({
-	"db.getFriendLocations": function(friendIds) {
+	"db.getFriendLocations": function() {
+		var friendIds = [];
+		
+		var friends = Meteor.user().profile.friends;
+		for(var i = 0; i < friends.length; i++){
+			var friend = friends[i];
+			friendIds.push(friend.fb_id);
+		}
+
 		var users = Meteor.users.find({"services.facebook.id": {$in: friendIds}}, {profile: true}).fetch();
 		var data = [];
 		for(var i = 0; i < users.length; i++){
