@@ -21,8 +21,16 @@
 				<div class="collapse navbar-collapse navbar-public" id="navbar-top">
 					<ul class="nav navbar-nav navbar-right">
 						{{#if currentUser}}
-							<li><a href="{{pathFor route="home"}}">Home</a></li>
-							<li><a href="{{pathFor route="friends"}}"><span class="glpyhicon glyphicon-user"></span>Friends</a></li>
+							<li>
+								<a href="{{pathFor route="home"}}">
+									<i class="fa fa-home"></i> Home
+								</a>
+							</li>
+							<li>
+								<a href="{{pathFor route="friends"}}">
+									<i class="fa fa-users"></i> Friends
+								</a>
+							</li>
 							<!-- <li><img src="{{currentUser.profile.profile_picture_url}}"></li> -->
 						{{/if}}
 						{{> login}}
