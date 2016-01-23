@@ -6,10 +6,9 @@ Meteor.startup(function() {
 		if (Mapbox.loaded()) {
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
 			map = L.mapbox.map("map", "mapbox.emerald");
-			// map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
-			
 			map.setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 16);
 			
+			// Icons
 			var greenIcon = L.icon({
 				iconUrl: 'green-marker.png',
 				iconSize: [22, 33],
@@ -21,10 +20,10 @@ Meteor.startup(function() {
 				iconSize: [22, 33],
 				iconAnchor: [11, 33],
 			});
-
-			var iAmHere = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude]).addTo(map);
-			var iAmHereToo = L.marker([1.300768, 103.770574], {icon: greenIcon}).addTo(map);
-			var iAmHereTooAlso = L.marker([1.298591, 103.770091], {icon: redIcon}).addTo(map);
+			
+			// Marker
+			L.marker([1.300768, 103.770574], {icon: greenIcon}).addTo(map);
+			L.marker([1.298591, 103.770091], {icon: redIcon}).addTo(map);
 
 			// var polygon = L.polygon([
 			// 	L.latLng(1.300768, 103.770574),
@@ -44,28 +43,28 @@ Meteor.startup(function() {
 		            type: "Point",
 		            coordinates: [103.770574, 1.300768]
 		        },
-		        properties: {"marker-color": "#ff8000" }
+		        properties: {"marker-color": "#ccff99" }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.770091, 1.298591]
 		        },
-		        properties: {"marker-color": "#ff8000" }
+		        properties: {"marker-color": "#ff6666" }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.772969, 1.297752]
 		        },
-		        properties: {"marker-color": "#ff8000" }
+		        properties: {"marker-color": "#ccff99" }
 		    },{
 		        type: "Feature",
 		        geometry: {
 		            type: "Point",
 		            coordinates: [103.773365, 1.298234]
 		        },
-		        properties: {"marker-color": "#ff8000" }
+		        properties: {"marker-color": "#ff6666" }
 		    }];
 			featureLayer.setGeoJSON(geoJson);
 		}
