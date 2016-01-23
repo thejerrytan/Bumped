@@ -24,7 +24,8 @@ Template.home.onRendered(function(){
 	mapCentered = false;
 	mapFollow = false;
 	Tracker.autorun(function () {
-		if (Mapbox.loaded() && Geolocation.currentLocation() != null && !maploaded) {
+		var position = Geolocation.currentLocation();
+		if (Mapbox.loaded() && position != null && !maploaded) {
 			maploaded = true;
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
 			map = L.mapbox.map("map", "mapbox.emerald");
@@ -97,6 +98,7 @@ function loadMap(position, map, featureLayer){
 	    ];
 
 		Meteor.call('Bumped.getFriendLocations', function(err, data){
+			if (err) return console.log(err);
 			for (var i = 0; i<data.length; i++){
 				var currentFriend = getFriendGeoJson(data[i]);
 				if (currentFriend != null){
@@ -106,6 +108,12 @@ function loadMap(position, map, featureLayer){
 			featureLayer.setGeoJSON(geoJson);
 		});			
 	}
+	// Tracker.autorun(function () {
+	// 	if (Geolocation.currentLocation() == null){
+	// 		return;
+	// 	}
+	// 	getLocation(map, featureLayer);
+	// });
 	var loop = setTimeout(getLocation, 5000, map, featureLayer);
 }
 
@@ -143,9 +151,8 @@ function getFriendGeoJson(friend){
 
 function getLocation(map, featureLayer){
 	var locationFailure = false;
-
-	var position = Geolocation.currentLocation();
-	if (position.coords && position.coords.latitude && position.coords.longitude) {
+	var position = Geolocation.currentLocation(); 
+	if ( position != null && position.coords && position.coords.latitude && position.coords.longitude) {
 		var formatedPosition = [position.coords.latitude, position.coords.longitude, position.coords.accuracy];
 		Meteor.call("Bumped.updateLocation", formatedPosition ,function (err, data) {     
 			if (err) {

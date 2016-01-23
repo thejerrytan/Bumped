@@ -7,6 +7,9 @@ Meteor.methods({
 		Meteor.users.update(Meteor.userId(), {$set: {"profile.lastLocation": lastLocation, "profile.lastLocationTimestamp": (new Date()).getTime()}});
 	},
 	"Bumped.getFriendLocations": function() {
+		if (!Meteor.user()){
+			return [];
+		}
 		var friendIds = [];
 		var friendStatus = {};
 		
