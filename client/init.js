@@ -5,7 +5,7 @@ Meteor.startup(function() {
 		var currentLocation = {coords: {latitude: 1.296750, longitude: 103.773186}};
 		if (Mapbox.loaded()) {
 			L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnl0YW4iLCJhIjoiY2lqazVjdGJiMDMybXU0bHQ4a2kzOWI5biJ9.W57rFm6pWbNxfsagv_NX5Q';
-			map = L.mapbox.map("map", "mapbox.streets");
+			map = L.mapbox.map("map", "mapbox.emerald");
 			// map.panTo({lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude});
 			
 			map.setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 16);
@@ -33,6 +33,41 @@ Meteor.startup(function() {
 			// 	L.latLng(1.298234, 103.773365),
 			// 	L.latLng(1.300975, 103.771933),
 			// ], {color: '#ff8000'}).addTo(map);
+
+
+			// Dynamic Add and Remove Points
+			var featureLayer = L.mapbox.featureLayer().addTo(map);
+			var geoJson = [
+			{
+		        type: "Feature",
+		        geometry: {
+		            type: "Point",
+		            coordinates: [103.770574, 1.300768]
+		        },
+		        properties: {"marker-color": "#ff8000" }
+		    },{
+		        type: "Feature",
+		        geometry: {
+		            type: "Point",
+		            coordinates: [103.770091, 1.298591]
+		        },
+		        properties: {"marker-color": "#ff8000" }
+		    },{
+		        type: "Feature",
+		        geometry: {
+		            type: "Point",
+		            coordinates: [103.772969, 1.297752]
+		        },
+		        properties: {"marker-color": "#ff8000" }
+		    },{
+		        type: "Feature",
+		        geometry: {
+		            type: "Point",
+		            coordinates: [103.773365, 1.298234]
+		        },
+		        properties: {"marker-color": "#ff8000" }
+		    }];
+			featureLayer.setGeoJSON(geoJson);
 		}
 	});
 
