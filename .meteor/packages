@@ -19,9 +19,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-ui
-accounts-facebook
 service-configuration
-mrt:facebook-sdk
 meteorhacks:npm
 
 npm-container
@@ -30,3 +28,4 @@ iron:router
 ejson
 erasaur:meteor-lodash
 mdg:geolocation
+btafel:accounts-facebook-cordova
