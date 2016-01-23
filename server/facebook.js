@@ -45,7 +45,7 @@ Meteor.methods({
         Meteor.call("fb.getUserData", function(err, data){
             var fb_id = data.id;
 
-            var profile_picture_url = "https://graph.api.facebook/v2.5/" + data.id + "/picture?height=40&width=40";
+            var profile_picture_url = "https://graph.facebook.com/v2.5/" + data.id + "/picture?height=40&width=40";
             Meteor.users.update(Meteor.userId(), {
                 $set: {
                     "profile.profile_picture_url" : profile_picture_url, 
