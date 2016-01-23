@@ -27,6 +27,7 @@ pauloborges:mapbox
 iron:router
 ejson
 erasaur:meteor-lodash
+fortawesome:fontawesome
 mdg:geolocation
 btafel:accounts-facebook-cordova
 mrt:facebook-sdk

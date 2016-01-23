@@ -1,6 +1,65 @@
 /* CSS declarations go here */
-#login-buttons {
-	margin-top : 10px;
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav > a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block {
+	margin-top    : 15px;
+	padding-left  : 20px;
+	margin-right  : 20px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block > .fa {
+	border : none;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-facebook:hover {
+    background-color : #2D4373;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav .dropdown-menu a:hover {
+	background-color : #F5F5F5;
+    color: #000000;	
+}
+
+.profile-pic {
+	border : 4px solid rgb(36,36,255);
+	border-radius : 3px;
 }
 
 .map-container #map {
@@ -11,6 +70,97 @@
 	min-height : 500px;
 	border : 5px solid #AAAAAA;
 	border-radius : 3px;
+}
+
+nav.navbar.navbar-pacman {
+	background-color : #1A1A1A;
+}
+
+body {
+	background-image: url("bg.jpg");
+	background-color: #00004d;
+}
+
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.friend {
+	max-height: 200px;
+	max-width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.friend-header {
+	color: white;
+}
+
+.friend-type {
+	text-align: center;
+}
+
+.friend-type-icon{
+	top: 0px;
+	height: 75px;
+	max-width: 75px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1;
+	position: relative;
+}
+
+.friend-type-icon-container{
+	top: 0px;
+	left: 0px;
+	height: 75px;
+	width: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+.friend-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(256,128,0,0.5);
+}
+
+.enemy-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(128,0,0,0.5);
+}
+
+.homie-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(0,128,0,0.5);
 }
 
 #follow {
