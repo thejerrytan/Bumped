@@ -1,12 +1,13 @@
-//Router.route('/', function () {
-//  this.render('landingpage');
-//});
-//
+Router.route('/', {
+  name : "landingpage",
+  template: "landingpage"
+});
+
 //Router.route('/friends', function () {
 //  this.render('friends');
 //});
 
-Router.route('/', {
+Router.route('/home', {
   name: "home"
   //onBeforeAction: function () {
   //    if(Meteor.userId()){

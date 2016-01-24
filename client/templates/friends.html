@@ -2,84 +2,56 @@
 	<div class="container">
     	<div class="row">
     		<div class="col-md-4 center">
-    			<div class="friend-type center">
-    				<div class="friend-type-icon-container center">
-    					<img class="friend-type-icon" src="cherry.gif" />
+    			<div class="buddy">
+    				<div class="icon-center">
+    					<img src="/pacman.png">
     				</div>
-    				<div class="homie-data">
-		    			<h3 class="friend-header">Cherry-ish!</h3>
-						{{#each homies}}
-							<div class="friend">
-								<img src="{{profile_picture_url}}">
-								<p>{{name}}</p>
-								<div>
-									<button value="{{fb_id}}" class="btn btn-success meet">
-										<i class="fa fa-thumbs-up"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-warning neutral">
-										<i class="fa fa-circle"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-danger avoid">
-										<i class="fa fa-thumbs-down"></i>
-									</button>
-								</div>
-							</div>
-						{{/each}}
-					</div>
+	    			<h3 class="text-white">Buddies</h3>
+					{{#each homies}}
+    				<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet disabled" disabled><i class="fa fa-thumbs-up"></i></button>
+							<button value="{{fb_id}}" class="btn btn-default neutral"><i class="fa fa-hand-peace-o"></i></button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid"><i class="fa fa-thumbs-down"></i></button>
+						</div>
+    				</div>
+					{{/each}}
 				</div>
 			</div>
 			<div class="col-md-4 center">
-    			<div class="friend-type center">
-    				<div class="friend-type-icon-container center">
-    					<img class="friend-type-icon" src="undecided.gif" />
-    				</div>
-    				<div class="friend-data">
-						<h3 class="friend-header">Lukewarms!</h3>
-						{{#each friends}}
-							<div class="friend">
-								<img src="{{profile_picture_url}}">
-								<p>{{name}}</p>
-								<div>
-									<button value="{{fb_id}}" class="btn btn-success meet">
-										<i class="fa fa-thumbs-up"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-warning neutral">
-										<i class="fa fa-circle"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-danger avoid">
-										<i class="fa fa-thumbs-down"></i>
-									</button>
-								</div>
-							</div>
-						{{/each}}
+				<div class="friends">
+					{{#each friends}}
+					<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet"><i class="fa fa-thumbs-up"></i></button>
+							<button value="{{fb_id}}" class="btn btn-default neutral disabled" disabled><i class="fa fa-hand-peace-o"></i></button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid"><i class="fa fa-thumbs-down"></i></button>
+						</div>
 					</div>
+					{{/each}}
 				</div>
 			</div>
 			<div class="col-md-4 center">
-    			<div class="friend-type center">
-    				<div class="friend-type-icon-container center">
-    					<img class="friend-type-icon" src="ghost-marker.gif" />
-    				</div>
-    				<div class="enemy-data">
-						<h3 class="friend-header">Friendnemies!</h3>
-						{{#each friendnemies}}
-							<div class="friend">
-								<img src="{{profile_picture_url}}">
-								<p>{{name}}</p>
-								<div>
-									<button value="{{fb_id}}" class="btn btn-success meet">
-										<i class="fa fa-thumbs-up"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-warning neutral">
-										<i class="fa fa-circle"></i>
-									</button>
-									<button value="{{fb_id}}" class="btn btn-danger avoid">
-										<i class="fa fa-thumbs-down"></i>
-									</button>
-								</div>
-							</div>
-						{{/each}}
+				<div class="friendnemies">
+					<div class="icon-center">
+    					<img src="/ghost.png">
 					</div>
+					<h3 class="text-white">Enemies</h3>
+					{{#each friendnemies}}
+					<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet"><i class="fa fa-thumbs-up"></i></button>
+							<button value="{{fb_id}}" class="btn btn-default neutral"><i class="fa fa-hand-peace-o"></i></button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid disabled" disabled><i class="fa fa-thumbs-down"></i></button>
+						</div>
+					</div>
+					{{/each}}
 				</div>
 			</div>
 		</div>
