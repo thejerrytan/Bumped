@@ -90,8 +90,8 @@ function loadMap(position, map, featureLayer){
 		        	"marker-color": "#ccff99",
 		        	"title":"I am here!!",
 		        	"icon": {
-			            "iconUrl": "me-marker.gif",
-			            "iconSize": [50, 50], // size of the icon
+			            "iconUrl": "pacman.gif",
+			            "iconSize": [40, 40], // size of the icon
 			            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
 			            "className": "dot"
 			        }
@@ -141,11 +141,11 @@ function loadMap(position, map, featureLayer){
 }
 
 function getFriendGeoJson(friend){
-	var iconUrl = "smooch-marker.gif";
+	var iconUrl = "cherry.gif";
 	if (friend.status == "avoid"){
 		iconUrl = "ghost-marker.gif";
 	} else if (friend.status == "neutral"){
-		iconUrl = "troll.gif";
+		iconUrl = "undefined.gif";
 	}
 	if (friend && friend.lastLocation[1] && friend.lastLocation[0]){
 		var json = {
