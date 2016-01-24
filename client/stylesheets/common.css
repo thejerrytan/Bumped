@@ -61,6 +61,10 @@ header .navbar-default.navbar-pacman a.navbar-brand {
 	margin-top : 50px;
 }
 
+.center-no-margin {
+	text-align : center;
+}
+
 .icon-center {
 	top:0px;
 	left:0px;
