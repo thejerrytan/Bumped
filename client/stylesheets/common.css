@@ -1,14 +1,204 @@
 /* CSS declarations go here */
-#login-buttons {
-	margin-top : 10px;
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block {
+	margin-top    : 15px;
+	padding-left  : 20px;
+	margin-right  : 20px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block > .fa {
+	border : none;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a.btn-facebook:hover {
+    background-color : #2D4373;
+    color: #FFFFFF;
+}
+
+.navbar-default.navbar-pacman .navbar-nav .dropdown-menu a:hover {
+	background-color : #F5F5F5;
+    color: #000000;	
+}
+
+.profile-pic {
+	border : 4px solid rgb(36,36,255);
+	border-radius : 3px;
 }
 
 .map-container #map {
-	min-height : 500px;
+	min-height : 600px;
 }
 
 .map-container { 
 	min-height : 500px;
 	border : 5px solid #AAAAAA;
 	border-radius : 3px;
+}
+
+.center {
+	text-align : center;
+	margin-top : 50px;
+}
+
+.icon-center {
+	top:0px;
+	left:0px;
+	height:75px;
+	position:absolute;
+	width : 100%;
+	text-align : center;
+}
+
+.icon-center img {
+	top:0px;
+	height:75px;
+	max-width  : 75px;
+	margin-top:-50px;
+	margin-left:auto;
+	margin-right:auto;
+	position : relative;
+	z-index : 3;
+}
+
+.buddy {
+	border : 5px solid #2121DE;
+	border-radius : 5px;
+	background-color : #000000;
+	height : 550px;
+	overflow-y : scroll;
+}
+
+.friends {
+	padding-top:50px;
+	border : 5px solid #2121DE;
+	border-radius : 5px;
+	background-color : #000000;
+	height : 550px;
+	overflow-y : scroll;
+
+}
+
+.text-white {
+	color : white;
+}
+
+.friendnemies {
+	border : 5px solid #2121DE;
+	padding : 5px;
+	background-clip : padding-box;
+	border-radius : 5px;
+	background-color : #000000;
+	height : 550px;
+	overflow-y : scroll;
+
+}
+
+.bumped-thumbnail {
+	color: white;
+	margin-bottom : 10px;
+	margin-top : 5px;
+
+}
+
+nav.navbar.navbar-pacman {
+	background-color : #1A1A1A;
+}
+
+body {
+	background-image: url("bg.jpg");
+	background-color: #00004d;
+}
+
+.friend-type {
+	text-align: center;
+}
+
+.friend-type-icon{
+	top: 0px;
+	height: 75px;
+	max-width: 75px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1;
+	position: relative;
+}
+
+.friend-type-icon-container{
+	top: 0px;
+	left: 0px;
+	height: 75px;
+	width: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+.friend-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(256,128,0,0.5);
+}
+
+.enemy-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(128,0,0,0.5);
+}
+
+.homie-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(0,128,0,0.5);
+}
+
+#follow {
+	position: absolute;
+	top: 10px;
+	right:	10px;
+	z-index: 1;
+}
+
+#test {
+	position: absolute;
+	top: 60px;
+	right:	10px;
+	z-index: 1;
 }
