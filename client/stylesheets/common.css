@@ -47,7 +47,7 @@ header .navbar-default.navbar-pacman a.navbar-brand {
 }
 
 .map-container #map {
-	min-height : 500px;
+	min-height : 600px;
 }
 
 .map-container { 
@@ -74,6 +74,7 @@ header .navbar-default.navbar-pacman a.navbar-brand {
 	top:0px;
 	height:75px;
 	max-width  : 75px;
+	margin-top:-50px;
 	margin-left:auto;
 	margin-right:auto;
 	position : relative;
@@ -89,6 +90,7 @@ header .navbar-default.navbar-pacman a.navbar-brand {
 }
 
 .friends {
+	padding-top:50px;
 	border : 5px solid #2121DE;
 	border-radius : 5px;
 	background-color : #000000;
@@ -121,4 +123,9 @@ header .navbar-default.navbar-pacman a.navbar-brand {
 
 nav.navbar.navbar-pacman {
 	background-color : #1A1A1A;
+}
+
+body {
+	background-image: url("bg.jpg");
+	background-color: #00004d;
 }
