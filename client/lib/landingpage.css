@@ -276,17 +276,6 @@ nav {
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
 }
-nav .navbar-header.navbar-public {
-	height: 80px;
-}
-nav .navbar-public .navbar-brand {
-	font-size : 32px;
-	padding-top : 25px;
-}
-nav .navbar-public > ul > li {
-	padding-top: 15px;
-	height: 80px;
-}
 nav.navbar-transparent {
 	background-color: rgba(0,0,0,0);
 }
@@ -347,6 +336,25 @@ nav.navbar-static {
 .main-title h3 {
 	font-size: 30px;
 }
+
+.demo-request {
+	border : 5px solid #004A20;
+	border-radius : 20px;
+	padding : 10px;
+	background-color : #00C5AE;
+	opacity : 0.95;
+
+}
+.demo-request a.login{
+	background-color : #FE9920;
+
+}
+
+.demo-request a.play-store{
+	background-color : #000000;
+
+}
+
 .demo-request a {
 	display : inline-block;
 	margin-top : 20px;
@@ -354,7 +362,6 @@ nav.navbar-static {
 	border-width : 0px;
 	border-radius : 5px;
 	border-color : black;
-	background-color : #0CA088;
 	font-size : 18px;
 	padding : 10px 20px;
 
