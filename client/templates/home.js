@@ -1,3 +1,5 @@
+var _ = lodash;
+
 Template.home.onCreated(function(){
 	// // call a server method that populates the user collection with friends using fbgraph API
 	Mapbox.load();
@@ -97,16 +99,37 @@ function loadMap(position, map, featureLayer){
 		    }
 	    ];
 
-		Meteor.call('Bumped.getFriendLocations', function(err, data){
-			if (err) return console.log(err);
-			for (var i = 0; i<data.length; i++){
-				var currentFriend = getFriendGeoJson(data[i]);
-				if (currentFriend != null){
-					geoJson.unshift(currentFriend);
-				}
+		var user = Meteor.user();
+
+		var friendIds = [];
+		var friendStatus = {};
+
+		var friends = _.get(user, "profile.friends") || [];
+		friends.forEach(function (friend) {
+			friendIds.push(friend.fb_id);
+			friendStatus[friend.fb_id] = friend.status;
+		});
+
+		Meteor.users.find({"services.facebook.id": {$in: friendIds}}).forEach(function (user) {
+			var profile = user.profile || {};
+			var id = _.get(user, 'services.facebook.id');
+
+			var data = {
+				fb_id: id,
+				status: id != undefined ? friendStatus[id] : undefined,
+				name: profile.name,
+				lastLocation: profile.lastLocation,
+				lastLocationTimestamp: profile.lastLocationTimestamp,
+				profile_picture_url: profile.profile_picture_url
+			};
+
+			var currentFriend = getFriendGeoJson(data);
+			if (currentFriend != null){
+				geoJson.unshift(currentFriend);
 			}
-			featureLayer.setGeoJSON(geoJson);
-		});			
+		});
+
+		featureLayer.setGeoJSON(geoJson);
 	}
 	// Tracker.autorun(function () {
 	// 	if (Geolocation.currentLocation() == null){
