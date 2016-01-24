@@ -43,6 +43,28 @@ header .navbar-default.navbar-pacman a.navbar-brand {
     color: #FFFFFF;
 }
 
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
 .navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block {
 	margin-top    : 15px;
 	padding-left  : 20px;
