@@ -21,6 +21,50 @@ header .navbar-default.navbar-pacman a.navbar-brand {
     color: #FFFFFF;
 }
 
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
+header .navbar-nav > li > a {
+	line-height : 40px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    background-color: #111111;
+    color: #FFF;
+}
+
+header .navbar-default.navbar-pacman a.navbar-brand {
+	padding-top : 15px;
+	padding-bottom : 15px;
+	min-height : 70px;
+}
+
+.navbar-default.navbar-pacman .navbar-nav a:hover {
+    background-color : transparent;
+    color: #FFFFFF;
+}
+
 .navbar-default.navbar-pacman .navbar-nav a.btn-social.btn-block {
 	margin-top    : 15px;
 	padding-left  : 20px;
@@ -128,4 +172,77 @@ nav.navbar.navbar-pacman {
 body {
 	background-image: url("bg.jpg");
 	background-color: #00004d;
+}
+
+.friend-type {
+	text-align: center;
+}
+
+.friend-type-icon{
+	top: 0px;
+	height: 75px;
+	max-width: 75px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1;
+	position: relative;
+}
+
+.friend-type-icon-container{
+	top: 0px;
+	left: 0px;
+	height: 75px;
+	width: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+.friend-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(256,128,0,0.5);
+}
+
+.enemy-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(128,0,0,0.5);
+}
+
+.homie-data{
+	position: relative;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 36px;
+	height: 550px;
+	overflow-y: scroll;
+	background-color: rgba(0,128,0,0.5);
+}
+
+#follow {
+	position: absolute;
+	top: 10px;
+	right:	10px;
+	z-index: 1;
+}
+
+#test {
+	position: absolute;
+	top: 60px;
+	right:	10px;
+	z-index: 1;
 }

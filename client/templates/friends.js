@@ -20,7 +20,7 @@ Template.friends.onRendered(function(){
 Template.friends.events({
 	"click .btn.neutral" : function(event){
 		event.preventDefault();
-		var fb_id = event.target.value;
+		var fb_id = event.currentTarget.value;
 		console.log(fb_id);
 
 		Meteor.call("Bumped.changeToNeutral", fb_id, function(err, data){
@@ -29,7 +29,7 @@ Template.friends.events({
 	},
 	"click .btn.meet" : function(event){
 		event.preventDefault();
-		var fb_id = event.target.value;
+		var fb_id = event.currentTarget.value;
 		console.log(fb_id);
 
 		Meteor.call("Bumped.changeToMeet", fb_id, function(err, data){
@@ -39,7 +39,7 @@ Template.friends.events({
 	},
 	"click .btn.avoid" : function(event){
 		event.preventDefault();
-		var fb_id = event.target.value;
+		var fb_id = event.currentTarget.value;
 		console.log(fb_id);
 
 		Meteor.call("Bumped.changeToAvoid", fb_id, function(err, data){
@@ -51,21 +51,21 @@ Template.friends.events({
 
 Template.friends.helpers({
 	friends : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return !friend.status || friend.status==="neutral";
 		});
 	},
 	friendnemies : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return friend.status==="avoid";
 		});
 	},
 	homies : function() {
-		var friends = _.get(Meteor.user(), "profile.friends") || {};
+		var friends = _.get(Meteor.user(), "profile.friends") || [];
 
 		return friends.filter(function (friend) {
 			return friend.status==="meet";
