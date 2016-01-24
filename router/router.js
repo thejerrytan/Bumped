@@ -1,6 +1,13 @@
 Router.route('/', {
   name : "landingpage",
-  template: "landingpage"
+  template: "landingpage",
+  onBeforeAction: function () {
+    if(Meteor.userId()){
+      Router.go('home');
+    } else {
+      this.next();
+    }
+  }
 });
 
 //Router.route('/friends', function () {
@@ -8,23 +15,17 @@ Router.route('/', {
 //});
 
 Router.route('/home', {
-  name: "home"
-  //onBeforeAction: function () {
-  //    if(Meteor.userId()){
-  //        Router.go('overview');
-  //    } else {
-  //        this.next();
-  //    }
-  //}
+  name: "home",
+  controller: LoginController,
 });
 
 Router.route('/friends', {
   name: "friends",
   template:"friends",
-  //controller: LoginControllerDasbhoard,
-  waitOn: function () {
+  controller: LoginController,
+  //waitOn: function () {
     //Meteor.subscribe('campaignsOverview', Meteor.userId());
     //Meteor.subscribe('')
-  },
+  //},
   //onRun: sidebarActive("overview")
 });
