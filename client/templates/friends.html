@@ -1,38 +1,58 @@
 <template name="friends">
 	<div class="container">
     	<div class="row">
-    		<div class="col-md-offset-1 col-md-3">
-    			<h3>Your Homies!</h3>
-				{{#each homies}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
-						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
-					</div>
-				{{/each}}
+    		<div class="col-md-4 center">
+    			<div class="buddy">
+    				<div class="icon-center">
+    					<img src="/pacman.jpg">
+    				</div>
+	    			<h3 class="text-white">Buddies</h3>
+					{{#each homies}}
+    				<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet disabled" disabled>Meet</button>
+							<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+						</div>
+    				</div>
+					{{/each}}
+				</div>
 			</div>
-			<div class="col-md-3">
-				<h3>Your friends!</h3>
-				{{#each friends}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
-						<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+			<div class="col-md-4 center">
+				<div class="friends">
+					{{#each friends}}
+					<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+							<button value="{{fb_id}}" class="btn btn-default neutral disabled" disabled>Neutral</button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid">Avoid</button>
+						</div>
 					</div>
-				{{/each}}
+					{{/each}}
+				</div>
 			</div>
-			<div class="col-md-3">
-				<h3>Your Friendnemies!</h3>
-				{{#each friendnemies}}
-					<img src="{{profile_picture_url}}">
-					<p>{{name}}</p>
-					<div>
-						<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
-						<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+			<div class="col-md-4 center">
+				<div class="friendnemies">
+					<div class="icon-center">
+    					<img src="/ghost.jpg">
 					</div>
-				{{/each}}
+					<h3 class="text-white">Enemies</h3>
+					{{#each friendnemies}}
+					<div class="bumped-thumbnail">
+						<img src="{{profile_picture_url}}">
+						<p>{{name}}</p>
+						<div>
+							<button value="{{fb_id}}" class="btn btn-success meet">Meet</button>
+							<button value="{{fb_id}}" class="btn btn-default neutral">Neutral</button>
+							<button value="{{fb_id}}" class="btn btn-danger avoid disabled" disabled>Avoid</button>
+						</div>
+					</div>
+					{{/each}}
+				</div>
 			</div>
 		</div>
 	</div>
