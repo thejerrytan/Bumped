@@ -7,7 +7,7 @@ App.configurePlugin('com.phonegap.plugins.facebookconnect', {
 App.info({
   name: 'Bump',
   description: 'A Hack&Roll Project',
-  version: '0.0.1'
+  version: '0.0.2'
 });
 
 App.icons({
