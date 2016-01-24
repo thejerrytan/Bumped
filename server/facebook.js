@@ -1,3 +1,5 @@
+var _ = lodash;
+
 Meteor.methods({
     //TODO: Bad hack.
     "fb.getUserData": function() {
@@ -18,7 +20,7 @@ Meteor.methods({
     "fb.loadFriends" : function() {
         var result;
         var bumped_friends = [];
-        var friends = Meteor.user().profile.friends;
+        var friends = _.get(Meteor.user(), 'profile.friends') || [];
         friends.forEach(function(e){
             bumped_friends.push(e.fb_id);
         });
