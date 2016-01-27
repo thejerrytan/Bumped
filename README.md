@@ -7,6 +7,8 @@ Privacy is secured as points marked on the map does not reveal the true identity
 
 For more information, please visit [Bumped](http://bumped.meteor.com).
 
+Updates: Bumped can also be found on [DevPost](http://devpost.com/software/bumped-rs41ua#updates)
+
 # How to Use?
 Using Bumped is easy. There are only 3 steps needed:
 
